@@ -16,6 +16,8 @@ class VolumeInfo {
   String? printType;
   List<String>? categories;
   String? maturityRating;
+  num? averageRating;
+  num? ratingsCount;
   bool? allowAnonLogging;
   String? contentVersion;
   PanelizationSummary? panelizationSummary;
@@ -37,6 +39,8 @@ class VolumeInfo {
     this.pageCount,
     this.printType,
     this.categories,
+    this.averageRating,
+    this.ratingsCount,
     this.maturityRating,
     this.allowAnonLogging,
     this.contentVersion,
@@ -66,6 +70,8 @@ class VolumeInfo {
         printType: json['printType'] as String?,
         categories: json['categories'] as List<String>?,
         maturityRating: json['maturityRating'] as String?,
+        averageRating: json['averageRating'] as num?,
+        ratingsCount: json['ratingsCount'] as num?,
         allowAnonLogging: json['allowAnonLogging'] as bool?,
         contentVersion: json['contentVersion'] as String?,
         panelizationSummary: json['panelizationSummary'] == null
@@ -96,6 +102,8 @@ class VolumeInfo {
         'categories': categories,
         'maturityRating': maturityRating,
         'allowAnonLogging': allowAnonLogging,
+         'averageRating': averageRating,
+        'ratingsCount': ratingsCount,
         'contentVersion': contentVersion,
         'panelizationSummary': panelizationSummary?.toJson(),
         'imageLinks': imageLinks?.toJson(),
