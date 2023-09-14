@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 
 class ApiService {
   final _baseUrl = 'https://www.googleapis.com/books/v1/';
+  // ignore: prefer_final_fields
   Dio _dio;
   ApiService(this._dio);
   Future<Map<String, dynamic>> get({required String endPoint}) async {

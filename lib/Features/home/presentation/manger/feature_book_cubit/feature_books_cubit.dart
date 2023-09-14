@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bookly/Features/domain/entities/book_entity.dart';
 import 'package:bookly/Features/domain/usecase/fetch_feature_book_use_case.dart';

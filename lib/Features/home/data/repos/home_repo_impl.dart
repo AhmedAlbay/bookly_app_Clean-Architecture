@@ -15,6 +15,7 @@ class HomeRepoImpl extends HomeRepo {
   @override
   Future<Either<Failure, List<BookEntitiy>>> fetchFeatureBooks() async {
     try {
+      // ignore: await_only_futures
       var bookList = await homeLocalDataSource.fetchFeatureBooks();
       if (bookList.isNotEmpty) {
         return right(bookList);
@@ -33,6 +34,7 @@ class HomeRepoImpl extends HomeRepo {
   Future<Either<Failure, List<BookEntitiy>>> fetchNewestBooks() async {
     try {
       List<BookEntitiy> books;
+      // ignore: await_only_futures
       books = await homeLocalDataSource.fetchNewestBooks();
       if (books.isNotEmpty) {
         return right(books);
