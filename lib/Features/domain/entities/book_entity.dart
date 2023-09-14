@@ -3,7 +3,7 @@ part 'book_entity.g.dart';
 @HiveType(typeId: 0)
 class BookEntitiy {
   @HiveField(0)
-  final String image;
+  final String? image;
   @HiveField(1)
   final String bookId;
   @HiveField(2)

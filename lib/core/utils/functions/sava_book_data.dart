@@ -2,6 +2,6 @@
 import 'package:hive/hive.dart';
 
 void saveBooksData(List<BookEntitiy> books ,String nameBox) {
-     var box = Hive.box(nameBox);
+     var box = Hive.box<BookEntitiy>(nameBox);
     box.addAll(books);
   }

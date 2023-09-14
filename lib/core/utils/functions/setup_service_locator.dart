@@ -1,23 +1,22 @@
+
 import 'package:bookly/Features/home/data/data_source/home_local_data_source.dart';
 import 'package:bookly/Features/home/data/data_source/home_remote_data_source.dart';
-
 import 'package:bookly/Features/home/data/repos/home_repo_impl.dart';
 import 'package:bookly/core/utils/api_service.dart';
 import 'package:dio/dio.dart';
-
 import 'package:get_it/get_it.dart';
 
-final getit = GetIt.instance;
+final getIt = GetIt.instance;
 void setupServiceLocator() {
-  getit.registerSingleton(
+  getIt.registerSingleton<ApiService>(
     ApiService(
       Dio(),
     ),
   );
-  getit.registerSingleton<HomeRepoImpl>(
+  getIt.registerSingleton<HomeRepoImpl>(
     HomeRepoImpl(
         homeRemoteDataSource: HomeRemoteDataSourceImpl(
-          getit.get<ApiService>(),
+          getIt.get<ApiService>(),
         ),
         homeLocalDataSource: HomeLocalDataSourceImpl()),
   );

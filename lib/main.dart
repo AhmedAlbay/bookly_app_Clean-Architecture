@@ -18,6 +18,7 @@ void main() async {
   Hive.registerAdapter(BookEntitiyAdapter());
   await Hive.openBox<BookEntitiy>(kFeatureBox);
   await Hive.openBox<BookEntitiy>(kNewestBox);
+  setupServiceLocator();
   Bloc.observer = SimpleBlocObserver();
   runApp(const Bookly());
 }
@@ -31,12 +32,13 @@ class Bookly extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) {
           return FeatureBooksCubit(
-            FetchFeatureBookUseCase(getit.get<HomeRepoImpl>()),
-          );
+            FetchFeatureBookUseCase(
+                getIt.get<HomeRepoImpl>()),
+          )..fetchFeatureBook();
         }),
         BlocProvider(create: (context) {
           return NewsetBooksCubit(
-            FetchNewestBookUseCase(getit.get<HomeRepoImpl>()),
+            FetchNewestBookUseCase(getIt.get<HomeRepoImpl>()),
           );
         })
       ],
