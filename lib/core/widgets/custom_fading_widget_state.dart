@@ -14,7 +14,8 @@ class _CustomFadingWidgetStateState extends State<CustomFadingWidgetState>
   late AnimationController animationController;
   @override
   void initState() {
-    animationController = AnimationController(vsync: this);
+    animationController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 800));
     animation = Tween<double>(begin: .2, end: .8).animate(animationController);
     animation.addListener(() {
       setState(() {});

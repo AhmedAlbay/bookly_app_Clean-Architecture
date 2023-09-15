@@ -1,5 +1,6 @@
 import 'package:bookly/Features/domain/entities/book_entity.dart';
 import 'package:bookly/Features/home/presentation/manger/feature_book_cubit/feature_books_cubit.dart';
+import 'package:bookly/Features/home/presentation/views/widgets/feature_books_list_view_loading_indcator.dart';
 import 'package:bookly/Features/home/presentation/views/widgets/featured_list_view.dart';
 import 'package:bookly/core/utils/functions/build_error_snackbar.dart';
 import 'package:flutter/material.dart';
@@ -24,12 +25,12 @@ class _FeaturedBooksListViewBlocConsumerState
       listener: ((context, state) {
         if (state is FeatureBooksSuccess) {
           books.addAll(state.books);
-          
-        }if (state is FeatureBooksPaginationFailure){
-               ScaffoldMessenger.of(context).showSnackBar(
-      buildErrorSnackBar(state, context),
-    );
-          }
+        }
+        if (state is FeatureBooksPaginationFailure) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            buildErrorSnackBar(state, context),
+          );
+        }
       }),
       builder: (context, state) {
         if (state is FeatureBooksSuccess ||
@@ -39,10 +40,9 @@ class _FeaturedBooksListViewBlocConsumerState
         } else if (state is FeatureBooksFailure) {
           return Text(state.errMessage);
         } else {
-          return const CircularProgressIndicator();
+          return const FeaturedBookListViewLoadingIndcator();
         }
       },
     );
   }
-
 }
